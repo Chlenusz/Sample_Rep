@@ -3,14 +3,14 @@ import tkinter as tk
 from threading import Thread 
 import os
 
-link = "https://www.youtube.com/watch?v=sVx1mJDeUjY&list=PLEy8KUItrBuYTOmKItDRwaK1Yo27HtP1z&index=13"
+ 
 
 
 class Work:
     
     
     def Download(self,link):
-        link ="https://www.youtube.com/watch?v=sVx1mJDeUjY&list=PLEy8KUItrBuYTOmKItDRwaK1Yo27HtP1z&index=13"
+        
         user = os.path.expanduser('~')
         youtubeObject = YouTube(link)
         youtubeObject = youtubeObject.streams.filter(only_audio=True).first()
