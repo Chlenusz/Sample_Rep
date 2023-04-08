@@ -5,7 +5,7 @@ class Maszyna():
     
     def generator(self, max):
         temp = 0
-        self.lokalizacja = "D:\Programy Python\Pliki Testowe\Dane.txt"
+        self.lokalizajca = "D:\Programy Python\Pliki Testowe\Dane.txt"
         while temp <= max:
             lista = ['4','1','6','2','0','3']
             for i in lista:
