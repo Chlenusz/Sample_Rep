@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>YT Downloader</title>
+
+  <style>
+ 
+    body{
+        background-color: rgba(255, 145, 0, 0.842);
+    }
+
+    .container {
+      height: 500px;
+      position: relative;
+      border: 3px solid green;
+      display: grid;
+      grid-template-columns: 25%;
+      grid-template-rows: auto;
+      align-content: center;
+    }
+    
+    #manual-write {
+      grid-column-start: 1;
+      grid-column-end: 1;
+      position: relative;
+      top:50%;
+      left:50%;
+
+    }
+
+    #display-write{
+      grid-column-start: 2;
+      grid-column-end: 2;
+      position: relative;
+      top:50%;
+      left: 50%;
+    }
+    
+    #Remove{
+      grid-column-start: 3;
+      grid-column-end: 3;
+      position: relative;
+      top:50%;
+      left: 50%;
+    }
+
+  </style>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div id="manual-write">
+        <button py-click="write_to_page()" id="manual">Say Hello</button>
+      </div>
+
+      <div id="display-write">
+        <button py-click="display_to_div()" id="display">Say Things!</button>
+        <div id="temp1">
+
+        </div>
+      </div>
+
+      <div id="Remove">
+        <button py-click="remove_div()" id="display">Remove Things</button>
+      </div>
+
+    </div>
+
+
+    
+    
+    
+    
+    <div id="input"></div>
+    <input type="text" id="test-input"/>
+    <button id="submit-button" type="submit" py-click="save()">OK</button>
+    <div id="test-output"></div>
+    
+
+
+  </form> 
+
+    <py-script>
+      from pyscript import Element
+
+    def write_to_page():
+      manual_div = Element("manual-write")
+      manual_div.element.innerHTML = "<p><b>Hello World</b></p>"
+
+    def display_to_div():
+      display("I display things!", target="temp1")  
+
+    def remove_div():
+      try:
+        test =Element("temp1")
+        test.clear()
+      except:
+        pass
+
+    def save():
+      x = Element("test-input")
+      display(x.value,target="test-output")
+    </py-script>
+  </body>
+</html>
