@@ -23,11 +23,15 @@ class App:
         self.button = tk.Button(master, text="Wygeneruj", command=self.Download)
         self.button.pack()
         
+        self.button_res = tk.Button(master, text="Wyczyść", command=self.Reset)
+        self.button_res.pack()
         
     def get_url(self):
         link = self.entry.get()
         return link
         
+    def Reset(self):
+        self.entry.delete(0,999)
         
     def Download(self):
         try:
@@ -38,19 +42,13 @@ class App:
             youtubeObject = youtubeObject.streams.filter(only_audio=True,bitrate="128kbps").get_audio_only()
             self.name = YouTube(self.link).title
             self.name += ".mp3"
-            replacements = [('/', '_'),('*', '_'),('"', '_')]
+            replacements = [('/', '_'),('*', '_'),('"', '_'),('|', ' ')]
             for char, replacement in replacements:
                 if char in self.name:
                     self.name = self.name.replace(char, replacement)
-            self.file = Thread.start(youtubeObject.download(output_path=destination,filename=self.name))
+            Thread.start(youtubeObject.download(output_path=destination,filename=self.name))
         except:
-            print("Błąd z wątkiem")
-
-        
-    def test(self):
-        self.name = YouTube(self.get_url()).title
-        self.name += ".mp3"
-        print(self.name)
+            print("Błąd z wątkiem / pobieranie ukończone")
 
 
 
